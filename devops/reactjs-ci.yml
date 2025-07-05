@@ -1,2 +1,2 @@
 include:
-  - local: 'common-ci.yml'
+  - local: '/devops/common-ci.yml'
