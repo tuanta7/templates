@@ -4,4 +4,7 @@ global:
 scrape_configs:
   - job_name: "prometheus"
     static_configs:
-      - targets: ["localhost:9090"]
+      - targets: [
+        "host.docker.internal:9731", # Backend Metrics
+        "host.docker.internal:9100", # Node Exporter Metrics
+      ]

@@ -1,4 +1,16 @@
 services:
+  postgres:
+    image: postgres:17.2
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: jod
+
   redis:
     image: redis:latest
     container_name: redis
@@ -36,10 +48,10 @@ services:
     container_name: rabbitmq-ui
     ports:
       - "5672:5672"
-      - "15672:15672" # UI
+      - "15672:15672"
     environment:
-      - RABBITMQ_DEFAULT_USER=admin
-      - RABBITMQ_DEFAULT_PASS=rabbitmqpw
+      - RABBITMQ_DEFAULT_USER=rabbitmq
+      - RABBITMQ_DEFAULT_PASS=password
       - RABBITMQ_DEFAULT_VHOST=/
     volumes:
       - ./data/rabbitmq:/var/lib/rabbitmq
