@@ -5,11 +5,12 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - ./data/postgres:/var/lib/postgresql/data
+      - ../data/postgres:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_DB: jod
+    restart: unless-stopped
 
   redis:
     image: redis:latest
@@ -17,30 +18,7 @@ services:
     ports:
       - "6379:6379"
     volumes:
-      - "./data/redis:/data"
-
-  prometheus:
-    image: prom/prometheus:latest
-    container_name: prometheus
-    ports:
-      - "9090:9090"
-    volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml
-    command:
-      - "--config.file=/etc/prometheus/prometheus.yml"
-
-  grafana:
-    image: grafana/grafana:latest
-    container_name: grafana
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./data/grafana:/var/lib/grafana
-    environment:
-      - GF_SECURITY_ADMIN_USER=admin
-      - GF_SECURITY_ADMIN_PASSWORD=admin
-    depends_on:
-      - prometheus
+      - ../data/redis:/data
     restart: unless-stopped
 
   rabbitmq:
@@ -54,7 +32,7 @@ services:
       - RABBITMQ_DEFAULT_PASS=password
       - RABBITMQ_DEFAULT_VHOST=/
     volumes:
-      - ./data/rabbitmq:/var/lib/rabbitmq
+      - ../data/rabbitmq:/var/lib/rabbitmq
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "rabbitmq-diagnostics", "ping"]

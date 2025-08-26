@@ -1,0 +1,81 @@
+services:
+#  prometheus:
+#    image: prom/prometheus:latest
+#    container_name: prometheus
+#    volumes:
+#      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+#    ports:
+#      - "9090:9090"
+#    restart: unless-stopped
+
+  clickhouse:
+    image: clickhouse/clickhouse-server:latest
+    container_name: clickhouse
+    ports:
+      - "9000:9000"
+      - "8123:8123"
+    environment:
+      - CLICKHOUSE_USER=signoz
+      - CLICKHOUSE_PASSWORD=password
+      - CLICKHOUSE_DB=signoz_traces
+    volumes:
+      - ./clickhouse/cluster.xml:/etc/clickhouse-server/config.d/cluster.xml
+      # - ../data/clickhouse:/var/lib/clickhouse
+    restart: unless-stopped
+
+  schema-migrator:
+    image: signoz/signoz-schema-migrator:latest
+    container_name: schema-migrator
+    command: [
+      "sync",
+      "--dsn=tcp://signoz:password@clickhouse:9000?database=signoz_traces",
+      "--replication=false",
+      "--cluster-name=signoz_cluster",
+      "--up="
+    ]
+    depends_on:
+      - clickhouse
+    restart: on-failure
+
+#  signoz-query:
+#    image: signoz/query-service:latest
+#    container_name: signoz-query
+#    environment:
+#      - CLICKHOUSE_HOST=clickhouse
+#      - CLICKHOUSE_PORT=9000
+#      - CLICKHOUSE_USER=signoz
+#      - CLICKHOUSE_PASSWORD=password
+#      - CLICKHOUSE_DATABASE=signoz_traces
+#    depends_on:
+#      - schema-migrator
+#      - clickhouse
+#    ports:
+#      - "8080:8080"
+#    restart: on-failure
+#
+#  signoz-frontend:
+#    image: signoz/frontend:latest
+#    container_name: signoz-frontend
+#    environment:
+#      - QUERY_SERVICE=http://signoz-query:8080
+#    depends_on:
+#      - signoz-query
+#    ports:
+#      - "3301:3301"
+#    restart: on-failure
+#
+#  signoz-collector:
+#    image: signoz/signoz-otel-collector:latest
+#    container_name: signoz-otel-collector
+#    command: [ "--config=/etc/otel-config.yml" ]
+#    volumes:
+#      - ./otel-config.yml:/etc/otel-config.yml
+#    ports:
+#      - "4317:4317"   # OTLP gRPC
+#      - "4318:4318"   # OTLP HTTP
+#      - "13133:13133" # Health check
+#      - "1777:1777"   # pprof
+#    restart: unless-stopped
+#    depends_on:
+#      - clickhouse
+#      - schema-migrator
