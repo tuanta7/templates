@@ -31,8 +31,12 @@ cd -
 
 ### 4.1. OTel Collector
 
-### 4.2. SigNoz
+### 4.2. Jaeger + Elasticsearch
 
 ### 4.3. Prometheus
+
+### 4.4. Grafana
+
+### 4.5. SigNoz
 
 ## 5. OAuth
