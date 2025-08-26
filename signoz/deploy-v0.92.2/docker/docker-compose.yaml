@@ -96,10 +96,10 @@ services:
   clickhouse:
     !!merge <<: *clickhouse-defaults
     container_name: signoz-clickhouse
-    # ports:
-    #   - "9000:9000"
-    #   - "8123:8123"
-    #   - "9181:9181"
+    ports:
+     - "9000:9000"
+     - "8123:8123"
+     - "9181:9181"
     volumes:
       - ../common/clickhouse/config.xml:/etc/clickhouse-server/config.xml
       - ../common/clickhouse/users.xml:/etc/clickhouse-server/users.xml
@@ -123,7 +123,7 @@ services:
       - sqlite:/var/lib/signoz/
     environment:
       - SIGNOZ_ALERTMANAGER_PROVIDER=signoz
-      - SIGNOZ_TELEMETRYSTORE_CLICKHOUSE_DSN=tcp://clickhouse:9000
+      - SIGNOZ_TELEMETRYSTORE_CLICKHOUSE_DSN=tcp://default:password@clickhouse:9000
       - SIGNOZ_SQLSTORE_SQLITE_PATH=/var/lib/signoz/signoz.db
       - DASHBOARDS_PATH=/root/config/dashboards
       - STORAGE=clickhouse
@@ -169,7 +169,7 @@ services:
     container_name: schema-migrator-sync
     command:
       - sync
-      - --dsn=tcp://clickhouse:9000
+      - --dsn=tcp://default:password@clickhouse:9000
       - --up=
     depends_on:
       clickhouse:
@@ -181,7 +181,7 @@ services:
     container_name: schema-migrator-async
     command:
       - async
-      - --dsn=tcp://clickhouse:9000
+      - --dsn=tcp://default:password@clickhouse:9000
       - --up=
     restart: on-failure
 networks:

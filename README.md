@@ -39,4 +39,11 @@ cd -
 
 ### 4.5. SigNoz
 
+Install ClickHouse client 
+
+```shell
+curl https://clickhouse.com/ | sh
+sudo ./clickhouse install
+```
+
 ## 5. OAuth
