@@ -46,35 +46,6 @@ In a couple of minutes, you should see the data generated from hotrod in SigNoz 
 
 For more details, please refer to the [SigNoz documentation](https://signoz.io/docs/install/docker/).
 
-## Docker Swarm
-
-To install SigNoz using Docker Swarm, run the following command:
-
-```sh
-cd deploy/docker-swarm
-docker stack deploy -c docker-compose.yaml signoz
-```
-
-Open http://localhost:8080 in your favourite browser.
-
-To start collecting logs and metrics from your infrastructure, run the following command:
-
-```sh
-cd generator/infra
-docker stack deploy -c docker-compose.yaml infra
-```
-
-To start generating sample traces, run the following command:
-
-```sh
-cd generator/hotrod
-docker stack deploy -c docker-compose.yaml hotrod
-```
-
-In a couple of minutes, you should see the data generated from hotrod in SigNoz UI.
-
-For more details, please refer to the [SigNoz documentation](https://signoz.io/docs/install/docker-swarm/).
-
 ## Uninstall/Troubleshoot?
 
 Go to our official documentation site [signoz.io/docs](https://signoz.io/docs) for more.
