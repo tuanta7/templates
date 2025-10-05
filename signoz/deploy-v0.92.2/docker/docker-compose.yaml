@@ -34,7 +34,7 @@ x-clickhouse-defaults: &clickhouse-defaults
 
 x-zookeeper-defaults: &zookeeper-defaults
   !!merge <<: *common
-  image: signoz/zookeeper:3.7.1
+  image: signoz/zookeeper:3.7.1 # bitnami is no longer free
   user: root
   labels:
     signoz.io/scrape: "true"
@@ -109,7 +109,7 @@ services:
 
   signoz:
     !!merge <<: *db-depend
-    image: signoz/signoz:${VERSION:-v0.92.1}
+    image: signoz/signoz:${VERSION:-v0.92.2}
     container_name: signoz
     command:
       - --config=/root/config/prometheus.yml
