@@ -26,7 +26,7 @@ services:
     container_name: rabbitmq-ui
     ports:
       - "5672:5672"
-      - "15672:15672"
+      - "15672:15672" # rabbitmq management
     environment:
       - RABBITMQ_DEFAULT_USER=rabbitmq
       - RABBITMQ_DEFAULT_PASS=password
@@ -39,3 +39,26 @@ services:
       interval: 30s
       timeout: 10s
       retries: 5
+
+  minio:
+    image: quay.io/minio/minio:latest
+    container_name: minio
+    ports:
+      - "9002:9000" # minio server
+      - "9001:9001" # minio console
+    volumes:
+      - ../data/minio:/data
+    environment:
+      MINIO_ROOT_USER: minio
+      MINIO_ROOT_PASSWORD: password
+    command: server /data --console-address ":9001"
+    restart: unless-stopped
+
+  mongodb:
+    image: mongo:8.0-noble
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - ../data/mongodb:/data/db
+    restart: unless-stopped
