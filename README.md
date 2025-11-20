@@ -45,5 +45,3 @@ Install ClickHouse client
 curl https://clickhouse.com/ | sh
 sudo ./clickhouse install
 ```
-
-## 5. OAuth
