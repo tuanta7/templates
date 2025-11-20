@@ -31,6 +31,9 @@ brew services
 
 Use `nano` (or your preferred editor) to modify the main configuration file. The path below is typical for Homebrew installations.
 
+> [!TIP]
+> To show hidden folders on a Mac, open Finder and press `Command + Shift + .` (period) to toggle their visibility.
+
 ```sh
 nano /opt/homebrew/etc/nginx/nginx.conf
 ```
