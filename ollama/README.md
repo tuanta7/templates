@@ -66,19 +66,19 @@ brew services reload nginx
 
 ## 3. Cloudflare Tunnel Setup
 
-A Cloudflare Tunnel securely connects your locally running service (via Nginx) to the Cloudflare network without
-exposing an open incoming port on your firewall.
+The setup requires the creation of several components in Cloudflare:
 
-- Install the `cloudflared` daemon and authenticate it with your Cloudflare account.
-- Create policies and tunnels using the Cloudflare [dashboard](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/).
+- A tunnel to serve as the secured connectivity channel.
+- Service tokens, which will be used as non-interactive credentials for automated access.
+- An Access policy configured with the Service Auth action; otherwise, Cloudflare Access will initiate an identity-provider authentication flow.
+- An application configured to apply the above policy in order to protect the designated tunnel domain.
 
-> [!NOTE]
-> Detailed steps for Cloudflare Tunnel setup are extensive and depend on your Cloudflare dashboard configuration. Please
-> refer to the official Cloudflare Zero Trust documentation.
-
-Run the tunnel service
+Install and run the tunnel service
 
 ```sh
+# install cloudflared (using Homebrew on macOS)
+brew install cloudflared 
+
 # remove all existing tunnels
 sudo cloudflared service uninstall
 
