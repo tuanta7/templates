@@ -11,6 +11,8 @@ This [link](https://ai.google.dev/gemma/docs/integrations/ollama) provides the n
 ollama run gemma:2b
 ```
 
+⁉️ (Not sure) The Ollama API is designed to operate on a local machine. Public exposure is discouraged. Because of this constraint, any request that appears to originate from an external domain may be rejected pre-emptively. To make Ollama perceive the request as local, the proxy must override the Host header before forwarding.
+
 ## 2. Nginx Reverse Proxy Setup
 
 Nginx will be used to run a reverse proxy for your Ollama service. This is often required for domain mapping, SSL
