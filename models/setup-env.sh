@@ -21,7 +21,11 @@ MODELS_DIR="$SCRIPT_DIR/models"
 
 # Export environment variables
 export C_INCLUDE_PATH="$WHISPER_CPP_DIR/include:$WHISPER_CPP_DIR/ggml/include"
-export LIBRARY_PATH="$WHISPER_BUILD_DIR/src:$WHISPER_BUILD_DIR/ggml/src"echo -e "${YELLOW}"[INFO]"${NC}" Environment variables set:echo "C_INCLUDE_PATH: $C_INCLUDE_PATH"echo "LIBRARY_PATH: $LIBRARY_PATH"
+export LIBRARY_PATH="$WHISPER_BUILD_DIR/src:$WHISPER_BUILD_DIR/ggml/src"
+
+echo -e "${YELLOW}"[INFO]"${NC}" Environment variables set:
+echo "C_INCLUDE_PATH: $C_INCLUDE_PATH"
+echo "LIBRARY_PATH: $LIBRARY_PATH"
 
 # If this script is being sourced, don't exit
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then    
