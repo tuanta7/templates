@@ -44,3 +44,15 @@ kubectl apply -f dev-namespace.yaml -f prod-namespace.yaml
 kubectl apply -f deployment.yaml -n dev
 kubectl apply -f deployment.yaml -n prod
 ```
+
+## 2. Custom Resources
+
+A resource is an endpoint in the Kubernetes API that stores a collection of API objects of a certain kind; for example, the built-in pods resource contains a collection of Pod objects.
+
+Custom resources are extensions of the Kubernetes API.
+
+### Custom Controllers
+
+### Operator Pattern
+
+Operators are software extensions to Kubernetes that make use of custom resources to manage applications and their components

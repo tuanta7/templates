@@ -1,6 +1,6 @@
-# HA PostgreSQL on K8s
+# High Availability PostgreSQL on K8s
 
-A High Availability (HA) PostgreSQL database refers to a deployment pattern of PostgreSQL that is designed to remain continuously accessible, even in the presence of hardware failures, crashes, or network issues.
+A High Availability PostgreSQL database refers to a deployment pattern of PostgreSQL that is designed to remain continuously accessible, even in the presence of hardware failures, crashes, or network issues.
 
 ## 1. Replication
 
@@ -12,7 +12,7 @@ Multiple database instances (primary and replicas) are maintained, so if one fai
 
 Read-only traffic can be distributed across standby replicas, improving performance while the primary handles write operations.
 
-## 2. Typical HA Architecture
+## 2. HA Architecture (Typically)
 
 The main objective is to minimize downtime and data loss while ensuring that applications relying on the database can continue operating without significant interruption.
 
@@ -28,7 +28,7 @@ The main objective is to minimize downtime and data loss while ensuring that app
 
 Tools or orchestrators monitor the health of the primary node. If the primary fails, a standby is automatically promoted to primary. Examples include: Patroni, Stolon or Kubernetes Operators (e.g., CloudNativePG, CrunchyData, Zalando Postgres Operator)
 
-## 3. Deploy on K8s using CloudNativePG
+## 3. CloudNativePG
 
 Reference: [CloudNativePG Quickstart](https://cloudnative-pg.io/documentation/1.27/quickstart/)
 
