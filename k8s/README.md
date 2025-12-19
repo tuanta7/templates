@@ -1,10 +1,12 @@
 # Kubernetes & Kubeadm
 
+## 1. Creating Cluster
+
 Kubeadm is a tool built to provide `kubeadm init` and `kubeadm join` as best-practice fast paths for creating Kubernetes clusters
 
-## 1. Cluster Setup
+## 2. Cluster Setup
 
-### 1.1. Namespace
+### 2.1. Namespace
 
 In Kubernetes, namespaces provide a mechanism for isolating groups of resources within a single cluster. Names of resources need to be unique within a namespace, but not across namespaces.
 
@@ -45,7 +47,7 @@ kubectl apply -f deployment.yaml -n dev
 kubectl apply -f deployment.yaml -n prod
 ```
 
-## 2. Custom Resources
+## 3. Custom Resources
 
 A resource is an endpoint in the Kubernetes API that stores a collection of API objects of a certain kind; for example, the built-in pods resource contains a collection of Pod objects.
 

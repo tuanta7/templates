@@ -21,27 +21,15 @@ cd -
 
 ```shell
 # install nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 
-# install node.js
-```
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
-## 3. Databases & Queue
+source ~/.bashrc
+nvm --version
 
-## 4. Monitoring
-
-### 4.1. OTel Collector
-
-### 4.2. Jaeger + Elasticsearch
-
-### 4.3. Prometheus
-
-### 4.4. Grafana
-
-### 4.5. SigNoz
-
-Install ClickHouse client 
-
-```shell
-curl https://clickhouse.com/ | sh
-sudo ./clickhouse install
+# install node
+nvm install --lts
 ```

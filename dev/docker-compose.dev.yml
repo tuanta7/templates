@@ -12,15 +12,6 @@ services:
       POSTGRES_DB: jod
     restart: unless-stopped
 
-  redis:
-    image: redis:latest
-    container_name: redis
-    ports:
-      - "6379:6379"
-    volumes:
-      - ../data/redis:/data
-    restart: unless-stopped
-
   rabbitmq:
     image: rabbitmq:4.1.2-management
     container_name: rabbitmq-ui
