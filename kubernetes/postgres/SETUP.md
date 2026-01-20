@@ -1,4 +1,4 @@
-# High Availability PostgreSQL on K8s
+# K8s HA PostgreSQL
 
 A High Availability PostgreSQL database refers to a deployment pattern of PostgreSQL that is designed to remain continuously accessible, even in the presence of hardware failures, crashes, or network issues.
 
