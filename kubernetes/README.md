@@ -2,11 +2,13 @@
 
 This file defines an approach for setting up a Docker and Kubernetes cluster with Argo CD, Helm, and Rancher, along with a highly available PostgreSQL deployment using the CloudNativePG operator. Additional automation is subsequently applied using Ansible.
 
-## 1. Creating Cluster
+## 1. Bootstrapping a Cluster
 
 Reference: [Creating a cluster with kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/)
 
 Kubeadm is a tool built to provide `kubeadm init` and `kubeadm join` as best-practice fast paths for creating Kubernetes clusters
+
+### Create a Worker Node
 
 ## 2. Cluster Setup
 
