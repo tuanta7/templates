@@ -1,4 +1,4 @@
-# Kubernetes & Kubeadm
+# Kubernetes
 
 ## 1. Creating Cluster
 

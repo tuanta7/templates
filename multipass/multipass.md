@@ -2,7 +2,8 @@
 
 Reference: [Manage instances](https://documentation.ubuntu.com/multipass/latest/how-to-guides/manage-instances/)
 
-This document describes the initialization of a lightweight Ubuntu Server environment using Multipass on a macOS-based Mac mini. 
+> [!NOTE]
+> This document describes the initialization of a lightweight Ubuntu Server environment using Multipass on a macOS-based Mac Mini M1. 
 
 The resulting instance is intended to operate as a headless server, accessed exclusively via SSH. Network connectivity is established through a bridged Wi-Fi interface with a manually assigned (static) IP address to ensure consistent reachability on the local network.
 
