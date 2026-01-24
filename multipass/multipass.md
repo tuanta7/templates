@@ -1,11 +1,24 @@
-# Multipass Setup 
+# Multipass Setup
 
 Reference: [Manage instances](https://documentation.ubuntu.com/multipass/latest/how-to-guides/manage-instances/)
 
 > [!NOTE]
-> This document describes the initialization of a lightweight Ubuntu Server environment using Multipass on a macOS-based Mac Mini M1. 
+> This document describes the initialization of a lightweight Ubuntu Server environment using Multipass on a macOS-based Mac Mini M1.
 
 The resulting instance is intended to operate as a headless server, accessed exclusively via SSH. Network connectivity is established through a bridged Wi-Fi interface with a manually assigned (static) IP address to ensure consistent reachability on the local network.
+
+## MTU Configuration
+
+```sh
+# Check MTU value
+ifconfig
+
+# Find a workable number
+ping -D -s 1480 google.com
+
+# Update MTU value
+sudo ifconfig eth0 mtu 1450
+```
 
 ## Instance Lifecycle Management (Clean State)
 
@@ -62,7 +75,7 @@ Server connectivity was verified under the following network configuration: the 
 - Connectivity was validated by testing access to redis://192.168.1.2:6379/0.
 
 ```sh
-tuanta@M1 ~ % multipass info server               
+tuanta@M1 ~ % multipass info server
 Name:           server
 State:          Running
 Snapshots:      0
@@ -75,7 +88,7 @@ CPU(s):         4
 Load:           0.00 0.00 0.00
 Disk usage:     2.9GiB out of 123.9GiB
 Memory usage:   326.9MiB out of 3.8GiB
-Mounts: 
+Mounts:
 ```
 
 ## Next Steps

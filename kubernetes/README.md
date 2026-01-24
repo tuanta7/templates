@@ -2,17 +2,9 @@
 
 This file defines an approach for setting up a Docker and Kubernetes cluster with Argo CD, Helm, and Rancher, along with a highly available PostgreSQL deployment using the CloudNativePG operator. Additional automation is subsequently applied using Ansible.
 
-## 1. Bootstrapping a Cluster
+## 1. Cluster Setup
 
-Reference: [Creating a cluster with kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/)
-
-Kubeadm is a tool built to provide `kubeadm init` and `kubeadm join` as best-practice fast paths for creating Kubernetes clusters
-
-### Create a Worker Node
-
-## 2. Cluster Setup
-
-### 2.1. Namespace
+### 1.1. Namespace
 
 In Kubernetes, namespaces provide a mechanism for isolating groups of resources within a single cluster. Names of resources need to be unique within a namespace, but not across namespaces.
 
@@ -53,7 +45,7 @@ kubectl apply -f deployment.yaml -n dev
 kubectl apply -f deployment.yaml -n prod
 ```
 
-## 3. Custom Resources
+## 2. Custom Resources
 
 A resource is an endpoint in the Kubernetes API that stores a collection of API objects of a certain kind; for example, the built-in pods resource contains a collection of Pod objects.
 
