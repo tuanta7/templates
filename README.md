@@ -2,7 +2,7 @@
 
 ![OS](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=Ubuntu&logoColor=white)
 
-## Docker
+## Docker (containerd)
 
 Reference: [Install Docker Engine](https://docs.docker.com/engine/install/)
 
@@ -104,8 +104,10 @@ sudo systemctl restart containerd
 
 ### Calico
 
-```
+Reference: [Install Calico networking and network policy for on-premises deployments](https://docs.tigera.io/calico/latest/getting-started/kubernetes/self-managed-onprem/onpremises)
 
+```sh
+kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
 ```
 
 ### Worker Node
@@ -202,8 +204,4 @@ nvm --version
 
 # install node
 nvm install --lts
-```
-
-```
-
 ```

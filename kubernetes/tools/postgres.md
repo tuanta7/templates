@@ -25,3 +25,17 @@ The main objective is to minimize downtime and data loss while ensuring that app
 > To avoid split-brain scenarios (where two nodes think they are primary), HA setups typically use consensus systems like etcd, Consul, or ZooKeeper.
 
 ## 2. Sharding (with Replication)
+
+## 3. Failover Manager
+
+Tools or orchestrators monitor the health of the primary node. If the primary fails, a standby is automatically promoted to primary. Examples include: Patroni, Stolon or Kubernetes Operators (e.g., CloudNativePG, CrunchyData, Zalando Postgres Operator)
+
+### 3.1. Patroni
+
+Patroni is a template for high availability (HA) PostgreSQL solutions using Python. For maximum accessibility, Patroni supports a variety of distributed configuration stores like ZooKeeper, etcd, Consul or Kubernetes.
+
+### 3.2. CloudNativePG
+
+Reference: [CloudNativePG](https://cloudnative-pg.io)
+
+## 4. Citus
