@@ -1,6 +1,6 @@
 # ArgoCD
 
-Reference: [ArgoCD | Getting Started](https://argo-cd.readthedocs.io/en/stable/getting_started/)
+Reference: [Getting Started](https://argo-cd.readthedocs.io/en/stable/getting_started/)
 
 In most deployments, Argo CD is installed only once, usually in the `argocd` namespace, while applications are deployed into differents environments
 
@@ -14,6 +14,12 @@ kubectl label namespace prod argocd.argoproj.io/managed-by=argocd
 
 # get default admin password
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+```
+
+By default, Argo CD's API server is not exposed outside the cluster. For development purposes, use kubectl port-forward to expose ArgoCD API Server
+
+```sh
+kubectl port-forward --address 0.0.0.0 svc/argocd-server -n argocd 8080:443
 ```
 
 ## Helm
